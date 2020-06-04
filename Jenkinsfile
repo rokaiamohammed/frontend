@@ -1,11 +1,11 @@
 pipeline {
-   // agent any
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
+   agent any
+    // agent {
+    //     docker {
+    //         image 'node:6-alpine'
+    //         args '-p 3000:3000'
+    //     }
+    // }
     environment {
         CI = 'true'
     }
@@ -22,9 +22,9 @@ pipeline {
         // }
         stage('Deliver') {
             steps {
-                sh './deliver.sh'
+                sh 'npm run build'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './kill.sh'
+                sh 'npm start'
             }
         }
     }
