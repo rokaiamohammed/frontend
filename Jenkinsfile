@@ -20,13 +20,13 @@ pipeline {
         //         sh './test.sh'
         //     }
         // }
-        stage('Deliver') {
-            steps {
-                sh 'npm run build'
-                //input message: 'Finished using the web site? (Click "Proceed" to continue)'
+        // stage('Deliver') {
+        //     steps {
+        //         sh 'npm run build'
+        //         //input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 
-            }
-        }
+        //     }
+        // }
         stage('start') {
             steps {
                 sh 'npm start'
