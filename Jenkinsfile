@@ -51,13 +51,11 @@ pipeline {
     }
 
     failure {
-        failure {
         mail bcc: '', body: '''Hi, 
 
         The pipeline at Jenkins has failed. Pleas go over to the Jenkins and 
          check it out.
 
          Thanks!''', cc: '', from: '', replyTo: '', subject: 'The pipeline has failed!', to: 'rokaia.mohamed111099@gmail.com'
-    }
     }
 }
