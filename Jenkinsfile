@@ -28,11 +28,18 @@ pipeline {
                 
         //     }
         // }
-        stage('start') {
+        stage('Deliver') {
             steps {
-                sh 'npm start  & sleep 1'
+                sh './deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './kill.sh'
             }
         }
+        // stage('start') {
+        //     steps {
+        //         sh 'npm start  & sleep 1'
+        //     }
+        // }
     }
     // post {
     // success {
