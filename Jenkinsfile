@@ -35,11 +35,6 @@ pipeline {
     }
     post {
     success {
-      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-
-      hipchatSend (color: 'GREEN', notify: true,
-          message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-        )
 
       emailext (
           to: 'rokaia.mohamed111099@gmail.com',
@@ -51,6 +46,7 @@ pipeline {
     }
 
     failure {
+        mail bcc: '', body: "<b>Example</b><br>Project:", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name" , to: "rokaia.mohamed111099@gmail.com";  
         mail bcc: '', body: '''Hi, 
 
         The pipeline at Jenkins has failed. Pleas go over to the Jenkins and 
