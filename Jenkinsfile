@@ -30,7 +30,7 @@ pipeline {
         // }
         stage('start') {
             steps {
-                sh 'npm start'
+                sh 'npm start  & sleep 1'
             }
         }
     }
