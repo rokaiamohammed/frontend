@@ -30,8 +30,10 @@ pipeline {
         // }
         stage('Deliver') {
             steps {
+                sh'chmod u+r+x deliver.sh'
                 sh './deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh'chmod u+r+x kill.sh'
                 sh './kill.sh'
             }
         }
