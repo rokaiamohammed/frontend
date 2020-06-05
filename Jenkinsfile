@@ -51,18 +51,13 @@ pipeline {
     }
 
     failure {
-      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        failure {
+        mail bcc: '', body: '''Hi, 
 
-      hipchatSend (color: 'RED', notify: true,
-          message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-        )
+        The pipeline at Jenkins has failed. Pleas go over to the Jenkins and 
+         check it out.
 
-      emailext (
-          to: 'rokaia.mohamed111099@gmail.com',subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-          body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-          recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-        )
+         Thanks!''', cc: '', from: '', replyTo: '', subject: 'The pipeline has failed!', to: 'rokaia.mohamed111099@gmail.com'
     }
     }
 }
