@@ -58,4 +58,5 @@ pipeline {
 
          Thanks!''', cc: '', from: '', replyTo: '', subject: 'The pipeline has failed!', to: 'rokaia.mohamed111099@gmail.com'
     }
+    }
 }
