@@ -24,6 +24,7 @@ pipeline {
         // }
         stage('Deliver for development') {
             steps {
+                sh'chmod u+r+x development.sh'
                 sh './development.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './kill.sh'
@@ -31,6 +32,7 @@ pipeline {
         }
         stage('Deploy for production') {
             steps {
+                sh'chmod u+r+x Production.sh'
                 sh './Production.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './kill.sh'
