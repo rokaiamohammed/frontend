@@ -16,18 +16,12 @@ pipeline {
                 sh 'npm install'
             }
         }
-        // stage('Test') {
-        //     steps {
-        //         sh './test.sh'
-        //     }
-        // }
-        // stage('Deliver') {
-        //     steps {
-        //         sh 'npm run build'
-        //         //input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh'chmod u+r+x test.sh'
+                sh './test.sh'
+            }
+        }
         stage('Deliver') {
             steps {
                 sh'chmod u+r+x deliver.sh'
@@ -37,11 +31,7 @@ pipeline {
                 sh './kill.sh'
             }
         }
-        // stage('start') {
-        //     steps {
-        //         sh 'npm start  & sleep 1'
-        //     }
-        // }
+     
     }
     // post {
     // success {
