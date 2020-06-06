@@ -16,12 +16,12 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') {
-            steps {
-                sh'chmod u+r+x test.sh'
-                sh './test.sh'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         sh'chmod u+r+x test.sh'
+        //         sh './test.sh'
+        //     }
+        // }
         stage('Deliver') {
             steps {
                 sh'chmod u+r+x deliver.sh'
