@@ -35,6 +35,7 @@ pipeline {
                 sh'chmod u+r+x Production.sh'
                 sh './Production.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh'chmod u+r+x kill.sh'
                 sh './kill.sh'
             }
         }
