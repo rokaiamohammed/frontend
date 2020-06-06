@@ -22,15 +22,35 @@ pipeline {
         //         sh './test.sh'
         //     }
         // }
-        stage('Deliver') {
+        stage('Deliver for development') {
+            when {
+                branch 'development'
+            }
             steps {
-                sh'chmod u+r+x deliver.sh'
-                sh './deliver.sh'
+                sh './development.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh'chmod u+r+x kill.sh'
                 sh './kill.sh'
             }
         }
+        stage('Deploy for production') {
+            when {
+                branch 'production'
+            }
+            steps {
+                sh './Production.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './kill.sh'
+            }
+        }
+        // stage('Deliver') {
+        //     steps {
+        //         sh'chmod u+r+x deliver.sh'
+        //         sh './deliver.sh'
+        //         input message: 'Finished using the web site? (Click "Proceed" to continue)'
+        //         sh'chmod u+r+x kill.sh'
+        //         sh './kill.sh'
+        //     }
+        // }
      
     }
     // post {
