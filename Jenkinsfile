@@ -4,7 +4,7 @@ pipeline {
     agent {
         docker {
             image 'rokaia/frontend:0.0.1.RELEASE'
-            args '-p 8085:3000 -p 50000:50000 '
+            args '-p 13.72.75.179:8085:3000'
         }
     }
     
