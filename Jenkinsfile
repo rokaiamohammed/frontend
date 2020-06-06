@@ -1,12 +1,13 @@
 pipeline {
-   agent any
-   tools {nodejs "nodejs"}
-    // agent {
-    //     docker {
-    //         //image 'node:6-alpine'
-    //         args '-p 80:3000'
-    //     }
-    // }
+   //agent any
+   
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 8084:3000'
+        }
+    }
+    tools {nodejs "nodejs"}
     environment {
         CI = 'true'
     }
