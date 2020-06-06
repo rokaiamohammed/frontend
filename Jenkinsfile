@@ -1,12 +1,12 @@
 pipeline {
-   //agent any
+   agent any
    tools {nodejs "nodejs"}
-    agent {
-        docker {
-            image 'rokaia/frontend:0.0.1.RELEASE'
-            args '-p 13.72.75.179:8085:3000'
-        }
-    }
+    // agent {
+    //     docker {
+    //         image 'rokaia/frontend:0.0.1.RELEASE'
+    //         args '-p 13.72.75.179:8085:3000'
+    //     }
+    // }
     
     environment {
         CI = 'true'
