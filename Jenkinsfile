@@ -1,13 +1,13 @@
 pipeline {
    //agent any
-   
+   tools {nodejs "nodejs"}
     agent {
         docker {
             image 'node:6-alpine'
-            args '-p 8084:3000'
+            args '-p 8085:3000 -p 50000:50000 '
         }
     }
-    tools {nodejs "nodejs"}
+    
     environment {
         CI = 'true'
     }
