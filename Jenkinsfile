@@ -23,9 +23,6 @@ pipeline {
         //     }
         // }
         stage('Deliver for development') {
-            when {
-                branch 'development'
-            }
             steps {
                 sh './development.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
@@ -33,9 +30,6 @@ pipeline {
             }
         }
         stage('Deploy for production') {
-            when {
-                branch 'production'
-            }
             steps {
                 sh './Production.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
