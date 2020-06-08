@@ -35,7 +35,7 @@ pipeline {
 
         The pipeline at Jenkins Finished SUCCESSFULY. 
 
-        Thanks!''', cc: '', from: '', replyTo: '', subject: 'The pipeline has failed!', to: 'rokaia.mohamed111099@gmail.com'
+        Thanks!''', cc: '', from: '', replyTo: '', subject: 'The pipeline Finished SUCCESSFULY!', to: 'rokaia.mohamed111099@gmail.com'
 
      
     }
