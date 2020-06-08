@@ -1,18 +1,6 @@
 pipeline {
    agent any
    tools {nodejs "nodejs"}
-   node {
-        stage('init') {
-            checkout scm
-        }
-    
-    // agent {
-    //     docker {
-    //         image 'rokaia/frontend:0.0.1.RELEASE'
-    //         args '-p 13.72.75.179:8085:3000'
-    //     }
-    // }
-    
     environment {
         CI = 'true'
     }
@@ -22,12 +10,6 @@ pipeline {
                 sh 'npm install'
             }
         }
-        // stage('Test') {
-        //     steps {
-        //         sh'chmod u+r+x test.sh'
-        //         sh './test.sh'
-        //     }
-        // }
         stage('Deliver for development') {
             steps {
                 sh'chmod u+r+x development.sh'
@@ -46,18 +28,7 @@ pipeline {
                 sh './kill.sh'
             }
         }
-        // stage('Deliver') {
-        //     steps {
-        //         sh'chmod u+r+x deliver.sh'
-        //         sh './deliver.sh'
-        //         input message: 'Finished using the web site? (Click "Proceed" to continue)'
-        //         sh'chmod u+r+x kill.sh'
-        //         sh './kill.sh'
-        //     }
-        // }
-     
     }
-   }
     post {
     success {
 
