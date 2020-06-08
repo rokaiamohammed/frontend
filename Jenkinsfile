@@ -1,6 +1,11 @@
 pipeline {
    agent any
    tools {nodejs "nodejs"}
+   node {
+        stage('init') {
+            checkout scm
+        }
+    
     // agent {
     //     docker {
     //         image 'rokaia/frontend:0.0.1.RELEASE'
@@ -52,26 +57,29 @@ pipeline {
         // }
      
     }
-    // post {
-    // success {
+   }
+    post {
+    success {
 
-    //   emailext (
-    //       to: 'rokaia.mohamed111099@gmail.com',
-    //       subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-    //       body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-    //         <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-    //       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-    //     )
-    // }
+      emailext (
+          to: 'rokaia.mohamed111099@gmail.com',
+          subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+          body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+          recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+        )
+    }
 
-    // failure {
-    //     mail bcc: '', body: "<b>Example</b><br>Project:", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name" , to: "rokaia.mohamed111099@gmail.com";  
-    //     mail bcc: '', body: '''Hi, 
+    failure {
+        mail bcc: '', body: "Project: The pipeline at Jenkins has failed. Pleas go over to the Jenkins and 
+         check it out.", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name" , to: "rokaia.mohamed111099@gmail.com";  
+        mail bcc: '', body: '''Hi, 
 
-    //     The pipeline at Jenkins has failed. Pleas go over to the Jenkins and 
-    //      check it out.
+        The pipeline at Jenkins has failed. Pleas go over to the Jenkins and 
+         check it out.
 
-    //      Thanks!''', cc: '', from: '', replyTo: '', subject: 'The pipeline has failed!', to: 'rokaia.mohamed111099@gmail.com'
-    // }
-    // }
+         Thanks!''', cc: '', from: '', replyTo: '', subject: 'The pipeline has failed!', to: 'rokaia.mohamed111099@gmail.com'
+    }
+    }
+   
 }
