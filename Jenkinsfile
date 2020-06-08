@@ -71,8 +71,7 @@ pipeline {
     }
 
     failure {
-        mail bcc: '', body: "Project: The pipeline at Jenkins has failed. Pleas go over to the Jenkins and 
-         check it out.", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name" , to: "rokaia.mohamed111099@gmail.com";  
+        mail bcc: '', body: "Project: The pipeline at Jenkins has failed. Pleas go over to the Jenkins and check it out.", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name" , to: "rokaia.mohamed111099@gmail.com";  
         mail bcc: '', body: '''Hi, 
 
         The pipeline at Jenkins has failed. Pleas go over to the Jenkins and 
