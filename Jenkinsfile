@@ -31,14 +31,13 @@ pipeline {
     }
     post {
     success {
+        mail bcc: '', body: '''Hi, 
 
-      emailext (
-          to: 'rokaia.mohamed111099@gmail.com',
-          subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-          body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-          recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-        )
+        The pipeline at Jenkins Finished SUCCESSFULY. 
+
+        Thanks!''', cc: '', from: '', replyTo: '', subject: 'The pipeline has failed!', to: 'rokaia.mohamed111099@gmail.com'
+
+     
     }
 
     failure {
